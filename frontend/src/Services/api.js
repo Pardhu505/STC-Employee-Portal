@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Set your backend URL here. Fallback to localhost:8000 if the env var is missing or empty.
-const API_BASE_URL = (process.env.REACT_APP_BACKEND_URL || "http://localhost:8000") + "/api";
+const API_BASE_URL =  "https://stc-employee-portal.onrender.com/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
