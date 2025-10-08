@@ -53,8 +53,9 @@ const Header = ({ onSectionChange }) => {
 
   const handleDeactivateAccount = async () => {
     try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
       // Correcting the API call to match the backend endpoint
-      const response = await fetch(`http://localhost:8000/api/users/${user.email}/deactivate`, {
+      const response = await fetch(`${backendUrl}/api/users/${user.email}/deactivate`, {
         method: 'PUT',
       });
 

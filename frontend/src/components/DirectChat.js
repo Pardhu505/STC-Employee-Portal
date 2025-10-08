@@ -51,7 +51,9 @@ const DirectChat = ({ selectedEmployee, onBack }) => {
     if (user && recipientId) {
       const fetchMessages = async () => {
         try {
-          const response = await fetch(`http://localhost:8000/api/direct-messages?sender_id=${user.email}&recipient_id=${recipientId}&user_id=${user.email}&limit=50`);
+          const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+          const response = await fetch(`${backendUrl}/api/direct-messages?sender_id=${user.email}&recipient_id=${recipientId}&user_id=${user.email}&limit=50`);
+
           if (response.ok) {
             const oldMessages = await response.json();
             setMessages(oldMessages);
@@ -193,7 +195,8 @@ const DirectChat = ({ selectedEmployee, onBack }) => {
           const formData = new FormData();
           formData.append('file', selectedFile);
 
-          const response = await fetch('http://localhost:8000/api/files/upload', {
+          const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+          const response = await fetch(`${backendUrl}/api/files/upload`, {
             method: 'POST',
             body: formData,
           });
@@ -258,7 +261,8 @@ const DirectChat = ({ selectedEmployee, onBack }) => {
   // Delete only for me
 const handleDeleteForMe = async (messageId) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/messages/${messageId}/delete?user_id=${user.email}`, {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+    const response = await fetch(`${backendUrl}/api/messages/${messageId}/delete?user_id=${user.email}`, {
       method: 'POST',
     });
     if (response.ok) {
@@ -279,7 +283,8 @@ const handleDeleteForMe = async (messageId) => {
 // Delete for everyone
 const handleDeleteForEveryone = async (messageId) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/messages/${messageId}/delete-everyone?user_id=${user.email}`, {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+    const response = await fetch(`${backendUrl}/api/messages/${messageId}/delete-everyone?user_id=${user.email}`, {
       method: 'POST',
     });
     if (response.ok) {
@@ -301,8 +306,9 @@ const handleDeleteForEveryone = async (messageId) => {
 const handleClearChat = async () => {
   if (!window.confirm("Are you sure you want to clear this chat for yourself?")) return;
   try {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
     const response = await fetch(
-      `http://localhost:8000/api/direct-messages/clear-for-user?sender_id=${user.email}&recipient_id=${recipientId}&user_id=${user.email}`,
+      `${backendUrl}/api/direct-messages/clear-for-user?sender_id=${user.email}&recipient_id=${recipientId}&user_id=${user.email}`,
       { method: 'POST' }
     );
     if (response.ok) {
@@ -469,7 +475,8 @@ const handleClearChat = async () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('http://localhost:8000/api/files/upload', {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+      const response = await fetch(`${backendUrl}/api/files/upload`, {
         method: 'POST',
         body: formData,
       });

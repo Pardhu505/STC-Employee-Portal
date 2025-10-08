@@ -137,8 +137,9 @@ const UserProfile = () => {
     }
 
     try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
       // This functionality isn't in api.js, so we'll implement it here for now.
-      const response = await fetch(`http://localhost:8000/api/users/${user.email}/change-password`, {
+      const response = await fetch(`${backendUrl}/api/users/${user.email}/change-password`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ current_password: passwordData.currentPassword, new_password: passwordData.newPassword }),

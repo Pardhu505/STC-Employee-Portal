@@ -10,7 +10,7 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(ROOT_DIR, '.env'))
 
 # MongoDB connection for STC_Employees (attendance_client)
-attendance_mongo_url = "mongodb+srv://poori420:5imYVGkw7F0cE5K2@cluster0.53oeybd.mongodb.net/"
+attendance_mongo_url = os.environ['ATTENDANCE_MONGO_URL']
 attendance_client = AsyncIOMotorClient(attendance_mongo_url, tlsAllowInvalidCertificates=True)
 stc_db = attendance_client['STC_Employees']
 

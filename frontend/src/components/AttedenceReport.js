@@ -177,7 +177,8 @@ const AttendanceReport = () => {
     const employeesList = Object.values(employeeData);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/attendance-report', {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+      const response = await fetch(`${backendUrl}/api/attendance-report`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

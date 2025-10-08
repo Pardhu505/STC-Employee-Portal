@@ -2,12 +2,18 @@ from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import StreamingResponse
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from bson import ObjectId
+from pathlib import Path
+import os
 import io
+
+from dotenv import load_dotenv
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
 
 router = APIRouter(prefix="/api")
 
 # MongoDB connection for GridFS
-attendance_mongo_url = "mongodb+srv://poori420:5imYVGkw7F0cE5K2@cluster0.53oeybd.mongodb.net/"
+attendance_mongo_url = os.environ['ATTENDANCE_MONGO_URL']
 attendance_client = AsyncIOMotorClient(attendance_mongo_url, tlsAllowInvalidCertificates=True)
 chat_db = attendance_client['Internal_communication']
 fs = AsyncIOMotorGridFSBucket(chat_db)

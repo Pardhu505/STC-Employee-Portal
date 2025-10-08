@@ -54,8 +54,10 @@ const FileUpload = ({ onFileUploaded, channelId, recipientId, disabled = false }
       setUploadError(null);
 
       const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 
       const response = await fetch(`${backendUrl}/files/upload`, {
+      const response = await fetch(`${backendUrl}/api/files/upload`, {
         method: 'POST',
         body: formData,
       });

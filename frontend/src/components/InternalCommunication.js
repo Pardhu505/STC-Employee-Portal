@@ -120,7 +120,8 @@ const InternalCommunication = () => {
       if (channel) {
         try {
           console.log('Fetching messages for channel:', channel.name, 'for user:', user.email);
-          const response = await fetch(`http://localhost:8000/api/channel-messages?channel_id=${channel.name}&user_id=${user.email}&limit=50`);
+          const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+          const response = await fetch(`${backendUrl}/api/channel-messages?channel_id=${channel.name}&user_id=${user.email}&limit=50`);
           console.log('Fetch response status:', response.status);
           if (response.ok) {
             const oldMessages = await response.json();
@@ -190,7 +191,8 @@ const InternalCommunication = () => {
     if (channel && user?.email) {
       try {
         console.log('Fetching messages for channel:', channel.name, 'for user:', user.email);
-        const response = await fetch(`http://localhost:8000/api/channel-messages?channel_id=${channel.name}&user_id=${user.email}&limit=50`);
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+        const response = await fetch(`${backendUrl}/api/channel-messages?channel_id=${channel.name}&user_id=${user.email}&limit=50`);
         console.log('Fetch response status:', response.status);
         if (response.ok) {
           const oldMessages = await response.json();
@@ -303,7 +305,8 @@ const InternalCommunication = () => {
 
 const handleDeleteForMe = async (messageId) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/messages/${messageId}/delete?user_id=${user.email}`, {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+    const response = await fetch(`${backendUrl}/api/messages/${messageId}/delete?user_id=${user.email}`, {
       method: 'POST',
     });
     if (response.ok) {
@@ -329,7 +332,8 @@ const handleDeleteForEveryone = async (messageId) => {
   if (!window.confirm('Delete this message for everyone?')) return;
 
   try {
-    const response = await fetch(`http://localhost:8000/api/messages/${messageId}/delete-everyone?user_id=${user.email}`, {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+    const response = await fetch(`${backendUrl}/api/messages/${messageId}/delete-everyone?user_id=${user.email}`, {
       method: 'POST',
     });
     if (response.ok) {
@@ -351,8 +355,9 @@ const handleDeleteForEveryone = async (messageId) => {
 const handleDeleteMessages = async () => {
   if (!window.confirm("Are you sure you want to clear this channel chat for yourself?")) return;
   try {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
     const response = await fetch(
-      `http://localhost:8000/api/channel-messages/clear-for-user?channel_id=${selectedChannel.name}&user_id=${user.email}`,
+      `${backendUrl}/api/channel-messages/clear-for-user?channel_id=${selectedChannel.name}&user_id=${user.email}`,
       { method: 'POST' }
     );
     if (response.ok) {
