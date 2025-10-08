@@ -177,7 +177,7 @@ const AttendanceReport = () => {
     const employeesList = Object.values(employeeData);
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+      const backendUrl = https://stc-employee-portal.onrender.com;
       const response = await fetch(`${backendUrl}/api/attendance-report`, {
         method: 'POST',
         headers: {
