@@ -53,7 +53,7 @@ const Header = ({ onSectionChange }) => {
 
   const handleDeactivateAccount = async () => {
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+      const backendUrl ='https://stc-employee-portal.onrender.com;
       // Correcting the API call to match the backend endpoint
       const response = await fetch(`${backendUrl}/api/users/${user.email}/deactivate`, {
         method: 'PUT',
