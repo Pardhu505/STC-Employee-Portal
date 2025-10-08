@@ -53,7 +53,7 @@ const FileUpload = ({ onFileUploaded, channelId, recipientId, disabled = false }
     try {
       setUploadError(null);
 
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+      const backendUrl = 'https://stc-employee-portal.onrender.com
 
       const response = await fetch(`${backendUrl}/files/upload`, {
         method: 'POST',
