@@ -137,7 +137,7 @@ const UserProfile = () => {
     }
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+      const backendUrl = 'https://stc-employee-portal.onrender.com';
       // This functionality isn't in api.js, so we'll implement it here for now.
       const response = await fetch(`${backendUrl}/api/users/${user.email}/change-password`, {
         method: 'PUT',
