@@ -51,7 +51,7 @@ const DirectChat = ({ selectedEmployee, onBack }) => {
     if (user && recipientId) {
       const fetchMessages = async () => {
         try {
-          const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+          const backendUrl = 'https://stc-employee-portal.onrender.com;
           const response = await fetch(`${backendUrl}/api/direct-messages?sender_id=${user.email}&recipient_id=${recipientId}&user_id=${user.email}&limit=50`);
 
           if (response.ok) {
