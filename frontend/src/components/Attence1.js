@@ -5,7 +5,7 @@ import { useAuth, AuthProvider } from "@/contexts/AuthContext";
 const EMPAttendance = () => {
   const { user, loading: authLoading } = useAuth();
   const [employeeDetails, setEmployeeDetails] = useState({ empCode: null, empName: null });
-  const API_BASE_URL = (process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000') + '/api/attendance-report';
+  const API_BASE_URL =  'https://stc-employee-portal.onrender.com/api/attendance-report';
 
   const [attendanceData, setAttendanceData] = useState([]);
   const [loading, setLoading] = useState(true);
