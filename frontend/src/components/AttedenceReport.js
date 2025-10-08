@@ -177,7 +177,7 @@ const AttendanceReport = () => {
     const employeesList = Object.values(employeeData);
 
     try {
-      const backendUrl = https://stc-employee-portal.onrender.com;
+      const backendUrl = 'https://stc-employee-portal.onrender.com';
       const response = await fetch(`${backendUrl}/api/attendance-report`, {
         method: 'POST',
         headers: {
