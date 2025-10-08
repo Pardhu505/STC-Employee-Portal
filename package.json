@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "react-dropzone": "^14.3.8"
+  }
+}

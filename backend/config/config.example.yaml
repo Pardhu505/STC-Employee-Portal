@@ -1,0 +1,210 @@
+# Enhanced Internal Communication System Configuration
+# Copy this file to config.yaml and modify as needed
+
+# Database Configuration
+database:
+  url: "mongodb://localhost:27017"
+  name: "internal_communication"
+  attendance_url: "mongodb+srv://username:password@cluster.mongodb.net/"
+  pool_size: 10
+  max_overflow: 20
+  connection_timeout: 30
+
+# Security Configuration
+security:
+  secret_key: "your-secret-key-minimum-32-characters"
+  session_timeout: 3600  # 1 hour
+  max_login_attempts: 5
+  password_min_length: 8
+  enable_two_factor: false
+  allowed_hosts: ["*"]
+  cors_origins: ["http://localhost:3000", "http://localhost:3001"]
+
+# Server Configuration
+server:
+  host: "0.0.0.0"
+  port: 8000
+  debug: true
+  reload: true
+  workers: 1
+
+# WebSocket Configuration
+websocket:
+  host: "localhost"
+  port: 8001
+  max_connections: 1000
+  ping_interval: 20
+  ping_timeout: 30
+  max_message_size: 65536
+
+# File Upload Configuration
+file_upload:
+  max_file_size: 10485760  # 10MB
+  allowed_extensions: ["jpg", "jpeg", "png", "pdf", "doc", "docx", "txt", "xlsx", "pptx"]
+  upload_path: "uploads/"
+  enable_encryption: false
+  encryption_key: ""
+  max_files_per_user: 100
+  cleanup_old_files: true
+  file_retention_days: 90
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  log_dir: "logs/"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+  enable_json_logging: true
+  enable_security_logging: true
+  enable_performance_logging: true
+  enable_audit_logging: true
+
+# Rate Limiting Configuration
+rate_limiting:
+  enabled: true
+  messages_per_minute: 60
+  file_uploads_per_hour: 50
+  connections_per_minute: 30
+  api_calls_per_minute: 100
+  block_duration_minutes: 15
+
+# Notifications Configuration
+notifications:
+  enabled: true
+  email_enabled: false
+  push_enabled: true
+  smtp_server: "smtp.gmail.com"
+  smtp_port: 587
+  smtp_username: ""
+  smtp_password: ""
+  email_from: "noreply@company.com"
+
+# Monitoring Configuration
+monitoring:
+  enabled: true
+  metrics_enabled: true
+  health_check_interval: 30
+  alert_thresholds:
+    cpu_usage_percent: 80
+    memory_usage_percent: 85
+    disk_usage_percent: 90
+    error_rate_percent: 5
+    response_time_seconds: 2.0
+
+# API Configuration
+api:
+  docs_enabled: true
+  redoc_enabled: true
+  title: "Enhanced Internal Communication System"
+  description: "Advanced internal communication platform"
+  version: "2.0.0"
+  enable_cors: true
+  cors_allow_credentials: true
+
+# User Management
+users:
+  default_role: "employee"
+  allowed_roles: ["employee", "manager", "admin", "super_admin"]
+  max_users_per_organization: 10000
+  enable_user_registration: false
+  require_email_verification: false
+
+# Message Configuration
+messages:
+  max_content_length: 50000
+  enable_message_reactions: true
+  enable_message_editing: true
+  edit_window_minutes: 15
+  enable_message_deletion: true
+  enable_file_attachments: true
+  max_attachments_per_message: 5
+
+# Channel Configuration
+channels:
+  default_channels: ["general"]
+  max_channels_per_user: 50
+  enable_private_channels: true
+  enable_channel_archiving: true
+  max_channel_members: 1000
+
+# Detection System Configuration
+detection:
+  enabled: true
+  log_level: "WARNING"
+  suspicious_patterns:
+    - "rapid_connections"
+    - "unusual_message_patterns"
+    - "file_upload_spikes"
+    - "authentication_failures"
+  alert_thresholds:
+    connection_rate_per_minute: 10
+    message_rate_per_minute: 50
+    failed_login_attempts: 5
+
+# Performance Configuration
+performance:
+  enable_caching: true
+  cache_ttl_seconds: 300
+  enable_compression: true
+  compression_level: 6
+  enable_database_indexing: true
+  connection_pool_size: 20
+
+# Backup Configuration
+backup:
+  enabled: false
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  retention_days: 30
+  backup_path: "backups/"
+  compress_backups: true
+
+# Development Configuration
+development:
+  enable_debug_toolbar: false
+  enable_sql_alchemy_echo: false
+  enable_mongo_debug: false
+  mock_external_services: false
+
+# Production Configuration
+production:
+  enable_ssl_redirect: false
+  ssl_certificate_path: ""
+  ssl_private_key_path: ""
+  enable_hsts: false
+  hsts_max_age: 31536000
+  enable_content_security_policy: false
+  csp_policy: "default-src 'self'"
+
+# Integration Configuration
+integrations:
+  slack_webhook_url: ""
+  microsoft_teams_webhook_url: ""
+  email_service_api_key: ""
+  sms_service_api_key: ""
+  push_notification_service_key: ""
+
+# Analytics Configuration
+analytics:
+  enabled: false
+  tracking_id: ""
+  enable_user_analytics: false
+  enable_message_analytics: false
+  enable_performance_analytics: false
+  anonymize_data: true
+
+# Compliance Configuration
+compliance:
+  enable_hipaa_compliance: false
+  enable_gdpr_compliance: false
+  data_retention_days: 2555  # 7 years
+  enable_audit_logging: true
+  enable_data_encryption: false
+  encryption_algorithm: "AES256"
+
+# Custom Configuration
+custom:
+  company_name: "Your Company"
+  support_email: "support@company.com"
+  terms_of_service_url: ""
+  privacy_policy_url: ""
+  help_documentation_url: ""
