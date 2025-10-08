@@ -1,5 +1,5 @@
 // This file centralizes API calls for the application.
-const API_BASE_URL = (process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000') + '/api';
+const API_BASE_URL =  'https://stc-employee-portal.onrender.com/api';
 
 /**
  * Fetches the complete profile for a specific user by their email.
