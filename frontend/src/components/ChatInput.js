@@ -23,7 +23,7 @@ const ChatInput = ({ onSendMessage, disabled, placeholder, replyTo, onClearReply
         const formData = new FormData();
         formData.append('file', selectedFile);
 
-        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+        const backendUrl = 'https://stc-employee-portal.onrender.com
         const response = await fetch(`${backendUrl}/api/files/upload`, {
           method: 'POST',
           body: formData,
