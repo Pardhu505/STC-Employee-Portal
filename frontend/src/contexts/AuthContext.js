@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useRef } from 'r
 import { employeeAPI } from '../Services/api';
 
 // Auto-detect WS URL with fallback
-const WS_URL = "ws://localhost:8000/api/ws";
+const WS_URL = "ws://stc-employee-portal.onrender.com/api/ws";
 
 const AuthContext = createContext();
 
