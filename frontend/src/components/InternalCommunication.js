@@ -120,7 +120,7 @@ const InternalCommunication = () => {
       if (channel) {
         try {
           console.log('Fetching messages for channel:', channel.name, 'for user:', user.email);
-          const backendUrl ='https://stc-employee-portal.onrender.com;
+          const backendUrl ='https://stc-employee-portal.onrender.com';
           const response = await fetch(`${backendUrl}/api/channel-messages?channel_id=${channel.name}&user_id=${user.email}&limit=50`);
           console.log('Fetch response status:', response.status);
           if (response.ok) {
